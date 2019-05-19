@@ -8,6 +8,8 @@ namespace Microondas.UI
     {
         public void ListarProgramasPadrao(List<Programa> programas)
         {
+            Console.Clear();
+            Console.WriteLine("******* LISTA DE PROGRAMAS *******");
             foreach (var programa in programas)
             {
                 Listar(programa);
@@ -16,11 +18,12 @@ namespace Microondas.UI
 
         public void Listar(Programa programa)
         {
-            Console.WriteLine("Nome: " + programa.Nome);
-            Console.WriteLine("Tempo: " + programa.Tempo);
-            Console.WriteLine("Potência: " + programa.Potencia);
-            Console.WriteLine("Caracter: " + programa.Caracter);
-            Console.WriteLine("Instrução: " + programa.Instrucao);
+            Console.WriteLine("-----------------------------------");
+            Console.WriteLine("\n     Nome: " + programa.Nome);
+            Console.WriteLine("     Tempo: " + programa.Tempo);
+            Console.WriteLine("     Potência: " + programa.Potencia);
+            Console.WriteLine("     Caracter: " + programa.Caracter);
+            Console.WriteLine("     Instrução: " + programa.Instrucao);
         }
     }
 }

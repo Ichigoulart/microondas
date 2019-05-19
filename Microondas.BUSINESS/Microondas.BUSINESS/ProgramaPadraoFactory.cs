@@ -10,11 +10,11 @@ namespace Microondas.BUSINESS
         public List<Programa> ObterProgramasPadrao()
         {
             Programas = new List<Programa>();
-            Programas.Add(new Programa("Frango", 10, 5, '-', "Instrução - frango"));
-            Programas.Add(new Programa("Linguiça", 9, 4, '*', "Instrução - linguica"));
-            Programas.Add(new Programa("Pipoca", 8, 7, '+', "Instrução - pipoca"));
-            Programas.Add(new Programa("Sopa", 7, 3, '^', "Instrução - sopa"));
-            Programas.Add(new Programa("Ovo", 4, 9, '#', "Instrução - ovo"));
+            Programas.Add(new Programa("Frango", 10, 5, '-', "grelhar por 30 min."));
+            Programas.Add(new Programa("Linguiça", 9, 4, '*', "assar por 40 min."));
+            Programas.Add(new Programa("Pipoca", 8, 7, '+', "estourar por 10 min."));
+            Programas.Add(new Programa("Sopa", 7, 3, '^', "ferver por 20 min."));
+            Programas.Add(new Programa("Ovo", 4, 9, '#', "fritar por 5 min."));
 
             return Programas;
         }

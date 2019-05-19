@@ -33,7 +33,8 @@ namespace Microondas.BUSINESS
             if (potencia < 1 || potencia > 10)
                 throw new Exception("A potência informada deve estar entre 1 e 10");
 
-            Console.Write(nome);
+            Console.WriteLine();
+            Console.Write("     " + nome);
             for(int i=0; i < tempo; i++)
             {
                 for (int j = 0; j < potencia; j++)
@@ -43,7 +44,7 @@ namespace Microondas.BUSINESS
                 }
                 
             }
-            Console.WriteLine("Aquecida!");
+            Console.WriteLine("\n\n     Aquecida!");
 
         }
 
@@ -52,6 +53,65 @@ namespace Microondas.BUSINESS
             Cozinhar("Cozinhar Rápido", 30, 8, '.');
         }
 
+        public void CozinharPorTempoPotencia()
+        {
+            Console.Write("\n     Informe o tempo entre 1 e 120 segundos: ");
+            var tempo = Console.ReadLine();
+            int tempoint;
+            try
+            {
+                tempoint = Convert.ToInt16(tempo);
+            }
+            catch
+            {
 
+                throw new Exception("Tempo informado inválido!");
+            }
+            Console.Write("\n     Informe a potencia entre 1 e 10: ");
+            var potencia = Console.ReadLine();
+            int potenciaint;
+            try
+            {
+                potenciaint = Convert.ToInt16(potencia);
+            }
+            catch
+            {
+
+                throw new Exception("Potência informada inválida!");
+            }
+            Cozinhar("Cozinhando por tempo e potencia", tempoint, potenciaint, '.');
+        }
+
+        public void CozinharPrograma(Microondas microondas)
+        {
+            Console.Write("\n     Informe o programa para cozinhar: ");
+            var alimento = Console.ReadLine();
+            try
+            {
+                var programa = new BuscaPrograma().Buscar(alimento, microondas);
+                Cozinhar(programa.Nome, programa.Tempo, programa.Potencia, programa.Caracter);
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine(e.Message);
+            }
+        }
+        
+        public Programa BuscarPrograma(Microondas microondas)
+        {
+            Console.Write("\n     Informe o programa para consultar se já existe: ");
+            var alimento = Console.ReadLine();
+            try
+            {
+                var programa = new BuscaPrograma().Buscar(alimento, microondas);
+                return programa;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
     }
 }

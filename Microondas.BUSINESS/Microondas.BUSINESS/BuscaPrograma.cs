@@ -18,7 +18,7 @@ namespace Microondas.BUSINESS
                     return programa;
                 }
             }
-            throw new Exception("Não foi encontrado um programa para o alimento informado!");
+            throw new Exception("\n     Não foi encontrado um programa para o alimento informado!");
         }
     }
 }
