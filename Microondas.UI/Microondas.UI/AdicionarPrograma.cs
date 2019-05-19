@@ -19,14 +19,14 @@ namespace Microondas.UI
 
         public Programa Adicionar()
         {
-            Console.Write("\n     Informe o nome do alimento:");
+            Console.Write("\n     Informe o nome do alimento: ");
             var nome = Console.ReadLine();
             if(string.IsNullOrWhiteSpace(nome))
             {
                 throw new Exception("Nome informado é inválido!");
             }
             _programa.Nome = nome;
-            Console.Write("     Informe o tempo do alimento entre 1 e 120 segundos:");
+            Console.Write("     Informe o tempo do alimento entre 1 e 120 segundos: ");
             var tempo = Console.ReadLine();
             try
             {
@@ -37,7 +37,7 @@ namespace Microondas.UI
 
                 throw new Exception("Tempo informado inválido!");
             }
-            Console.Write("     Informe a potencia do alimento entre 1 e 10:");
+            Console.Write("     Informe a potencia do alimento entre 1 e 10: ");
             var potencia = Console.ReadLine();
             try
             {
@@ -48,7 +48,7 @@ namespace Microondas.UI
 
                 throw new Exception("Potência informada inválida!");
             }
-            Console.Write("     Informe o caracter do alimento:");
+            Console.Write("     Informe o caracter do alimento: ");
             var caracter = Console.ReadLine();
             try
             {
@@ -59,7 +59,7 @@ namespace Microondas.UI
 
                 throw new Exception("Caracter informado é inválido!");
             }
-            Console.Write("     Informe as instruções do alimento:");
+            Console.Write("     Informe as instruções do alimento: ");
             var instrucao = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(instrucao))
             {

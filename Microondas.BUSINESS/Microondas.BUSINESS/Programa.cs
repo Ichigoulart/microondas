@@ -23,10 +23,5 @@ namespace Microondas.BUSINESS.Programas
             Caracter = caracter;
             Instrucao = instrucao;
         }
-
-        public void Aquecer()
-        {
-            new Microondas().Cozinhar(Nome, Tempo, Potencia, Caracter);
-        }
     }
 }
