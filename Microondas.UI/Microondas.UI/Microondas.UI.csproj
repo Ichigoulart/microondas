@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AdicionarPrograma.cs" />
     <Compile Include="ConsultaPrograma.cs" />
+    <Compile Include="CozimentoPadrao.cs" />
     <Compile Include="ListagemProgramas.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

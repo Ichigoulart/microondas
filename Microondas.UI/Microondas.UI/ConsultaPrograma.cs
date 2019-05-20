@@ -1,25 +1,30 @@
-﻿using Microondas.BUSINESS;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Microondas.UI
 {
     public class ConsultaPrograma
     {
-        public void Consultar(string nomeAlimento, Microondas.BUSINESS.Microondas microondas)
+        private Microondas.BUSINESS.Microondas _microondas;
+
+        public ConsultaPrograma(BUSINESS.Microondas microondas)
         {
+            _microondas = microondas;
+        }
+
+        public void Consultar()
+        {
+            Console.Write("\n     Informe o programa para consultar se já existe: ");
+            var alimento = Console.ReadLine();
             try
             {
-                var programa = new BuscaPrograma().Buscar(nomeAlimento, microondas);
-                new ListagemProgramas().Listar(programa);
-
+                var programa = _microondas.BuscarPrograma(alimento);
+                if (programa != null)
+                {
+                    new ListagemProgramas().Listar(programa);
+                }
             }
-            catch (Exception e)
+            catch(Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
         }

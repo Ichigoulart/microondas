@@ -17,21 +17,21 @@ namespace Microondas.BUSINESS
 
         public Programa AdicionarPrograma(Programa programa)
         {
-            new ValidadorPrograma().Validar(programa.Tempo, programa.Potencia);
+            new ValidadorPrograma().Validar(programa);
             Programas.Add(programa);
             return programa;
         }
 
-        public void Cozinhar(string nome, int tempo, int potencia, char caracter)
+        public void Cozinhar(Programa programa)
         {
             Console.WriteLine();
-            Console.Write("     " + nome);
-            for (int i = 0; i < tempo; i++)
+            Console.Write("     " + programa.Nome);
+            for (int i = 0; i < programa.Tempo; i++)
             {
-                for (int j = 0; j < potencia; j++)
+                for (int j = 0; j < programa.Potencia; j++)
                 {
-                    Thread.Sleep(1000 / potencia);
-                    Console.Write(caracter);
+                    Thread.Sleep(1000 / programa.Potencia);
+                    Console.Write(programa.Caracter);
                 }
 
             }
@@ -42,28 +42,25 @@ namespace Microondas.BUSINESS
         {
             try
             {
-                var programa = new BuscaPrograma().Buscar(alimento, this);
-                Cozinhar(programa.Nome, programa.Tempo, programa.Potencia, programa.Caracter);
+                var programa = BuscarPrograma(alimento);
+                Cozinhar(programa);
             }
             catch (Exception e)
             {
-
                 Console.WriteLine(e.Message);
             }
         }
         
         public Programa BuscarPrograma(string alimento)
         {
-            try
+            foreach (var programa in Programas)
             {
-                var programa = new BuscaPrograma().Buscar(alimento, this);
-                return programa;
+                if (alimento.Equals(programa.Nome, StringComparison.OrdinalIgnoreCase))
+                {
+                    return programa;
+                }
             }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                return null;
-            }
+            throw new Exception("Não foi encontrado um programa para o alimento informado!");
         }
     }
 }

@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BuscaPrograma.cs" />
     <Compile Include="Microondas.cs" />
     <Compile Include="Programa.cs" />
     <Compile Include="ProgramaPadraoFactory.cs" />

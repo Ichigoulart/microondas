@@ -1,7 +1,5 @@
-﻿using Microondas.BUSINESS;
-using Microondas.BUSINESS.Programas;
+﻿using Microondas.BUSINESS.Programas;
 using System;
-using System.Collections.Generic;
 using System.Threading;
 
 namespace Microondas.UI
@@ -31,7 +29,7 @@ namespace Microondas.UI
                 {
                     opcao = Convert.ToInt16(Console.ReadLine());
                 }
-                catch (Exception e)
+                catch
                 {
                     Console.WriteLine("Opcao informada inválida!");            
                 }
@@ -39,36 +37,11 @@ namespace Microondas.UI
                 switch (opcao)
                 {
                     case 1:
-                        microondas.Cozinhar("Cozinhar Rápido", 30, 8, '.');
+                        microondas.Cozinhar(new Programa("Cozinhar Rápido", 30, 8, '.', "Instrução - cozinhar rapido"));
                         Console.ReadKey();
                         break;
                     case 2:
-                        Console.Write("\n     Informe o tempo entre 1 e 120 segundos: ");
-                        var tempo = Console.ReadLine();
-                        int tempoint;
-                        try
-                        {
-                            tempoint = Convert.ToInt16(tempo);
-                        }
-                        catch
-                        {
-
-                            throw new Exception("Tempo informado inválido!");
-                        }
-                        Console.Write("\n     Informe a potencia entre 1 e 10: ");
-                        var potencia = Console.ReadLine();
-                        int potenciaint;
-                        try
-                        {
-                            potenciaint = Convert.ToInt16(potencia);
-                        }
-                        catch
-                        {
-                            throw new Exception("Potência informada inválida!");
-                        }
-                        new ValidadorPrograma().Validar(tempoint,potenciaint);
-                        microondas.Cozinhar("Cozinhando por tempo e potencia", tempoint, potenciaint, '.');
-                        Console.ReadKey();
+                        new CozimentoPadrao(microondas).Cozinhar();
                         break;
                     case 3:
                         Console.Write("\n     Informe o programa para cozinhar: ");
@@ -81,13 +54,7 @@ namespace Microondas.UI
                         Console.ReadKey();
                         break;
                     case 5:
-                        Console.Write("\n     Informe o programa para consultar se já existe: ");
-                        var alimento2 = Console.ReadLine();
-                        var resultado2 = microondas.BuscarPrograma(alimento2);
-                        if(resultado2 != null)
-                        { 
-                            new ListagemProgramas().Listar(resultado2);
-                        }
+                        new ConsultaPrograma(microondas).Consultar();
                         Console.ReadKey();
                         break;
                     case 6:
